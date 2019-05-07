@@ -1,0 +1,90 @@
+{
+    "title": "NFL v3 RotoBaller Articles",
+    "docsUrl": "",
+    "url": "https://api.apis.guru/v2/specs/fantasydata.net/nfl-v3-rotoballer-articles/1.0/swagger.json",
+    "envVars": {},
+    "credentials": {
+        "fields": {
+            "server": {
+                "label": "Server",
+                "viewClass": "SelectView",
+                "model": [
+                    "http://api.fantasydata.net/v3/nfl/articles-rotoballer",
+                    "https://api.fantasydata.net/v3/nfl/articles-rotoballer",
+                    "--- Custom URL"
+                ],
+                "required": true
+            },
+            "otherServer": {
+                "label": "Custom Server URL",
+                "viewClass": "TextFieldView"
+            },
+            "apiKeyHeader": {
+                "label": "Ocp-Apim-Subscription-Key (apiKeyHeader)",
+                "viewClass": "TextFieldView"
+            },
+            "apiKeyQuery": {
+                "label": "subscription-key (apiKeyQuery)",
+                "viewClass": "TextFieldView"
+            }
+        }
+    },
+    "triggers": {
+        "startFlow": {
+            "main": "./lib/triggers/startFlow.js",
+            "type": "polling",
+            "title": "Start Flow",
+            "fields": {}
+        }
+    },
+    "actions": {
+        "RotoballerArticles": {
+            "main": "./lib/actions/RotoballerArticles.js",
+            "title": "RotoBaller Articles",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/RotoballerArticles.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "RotoballerArticlesByDate": {
+            "main": "./lib/actions/RotoballerArticlesByDate.js",
+            "title": "RotoBaller Articles by Date",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/RotoballerArticlesByDate.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "RotoballerArticlesByPlayer": {
+            "main": "./lib/actions/RotoballerArticlesByPlayer.js",
+            "title": "RotoBaller Articles by Player",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/RotoballerArticlesByPlayer.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        }
+    }
+}
